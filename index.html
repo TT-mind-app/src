@@ -394,6 +394,20 @@
         .help-content ol {
             padding-left: 20px;
         }
+
+        /* 30-08-2026: Кнопка отзыва */
+        .btn-feedback {
+            background-color: #8e8e93;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            box-sizing: border-box;
+            margin-top: 15px;
+        }
+
+        .btn-feedback:active {
+            background-color: #7c7c80;
+        }
     </style>
 </head>
 
@@ -562,7 +576,15 @@
             <p><b>Our Telegram bot:</b> <a href="https://t.me/tt_mind_bot" target="_blank"
                     style="color: #3390ec; text-decoration: none; font-weight: bold;">@tt_mind_bot</a></p>
         </div>
-        <button class="btn" onclick="closeHelp()" style="margin-top: 20px;" data-i18n="btnClose">Закрыть</button>
+
+        <!-- 30-08-2026: Кнопка в справку для вызова формы Отзывы -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKT6RPH8MXLepZxM-zMSAjFQ0FSnZjSJmLrvJBS51au-GsPQ/viewform?usp=dialog"
+            target="_blank" class="btn btn-feedback" data-i18n="btnFeedback">📝 Оставить отзыв</a>
+
+        <button class="btn" onclick="closeHelp()" style="margin-top: 10px;" data-i18n="btnClose">Закрыть</button>
+    </div>
+
+    <button class="btn" onclick="closeHelp()" style="margin-top: 20px;" data-i18n="btnClose">Закрыть</button>
     </div>
 
     <!-- МОДАЛЬНОЕ ОКНО: ПАУЗА -->
@@ -589,8 +611,19 @@
             <button id="btn-copy-results" class="btn btn-copy" onclick="copyResults()" data-i18n="btnCopy">📋
                 Скопировать результаты</button>
         </div>
-        <button id="btn-return-main" class="btn" onclick="location.reload()" style="margin-top: 20px;"
+        <!-- 30-08-2026 Добавляем кнопку в «Результаты»  -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKT6RPH8MXLepZxM-zMSAjFQ0FSnZjSJmLrvJBS51au-GsPQ/viewform?usp=dialog"
+            target="_blank" class="btn btn-feedback" data-i18n="btnFeedback">📝 Оставить отзыв</a>
+        <button id="btn-return-main" class="btn" onclick="location.reload()" style="margin-top: 10px;"
             data-i18n="btnReturn">Вернуться на главную</button>
+    </div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKT6RPH8MXLepZxM-zMSAjFQ0FSnZjSJmLrvJBS51au-GsPQ/viewform?usp=dialog"
+        target="_blank" class="btn btn-feedback" data-i18n="btnFeedback">📝 Оставить отзыв</a>
+    <button id="btn-return-main" class="btn" onclick="location.reload()" style="margin-top: 10px;"
+        data-i18n="btnReturn">Вернуться на главную</button>
+    </div>
+    <button id="btn-return-main" class="btn" onclick="location.reload()" style="margin-top: 20px;"
+        data-i18n="btnReturn">Вернуться на главную</button>
     </div>
 
     <script>
