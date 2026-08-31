@@ -394,6 +394,20 @@
         .help-content ol {
             padding-left: 20px;
         }
+
+        /* 31-08-26 Кнопка отзыва */
+        .btn-feedback {
+            background-color: #8e8e93;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            box-sizing: border-box;
+            margin-top: 15px;
+        }
+
+        .btn-feedback:active {
+            background-color: #7c7c80;
+        }
     </style>
 </head>
 
@@ -562,7 +576,11 @@
             <p><b>Our Telegram bot:</b> <a href="https://t.me/tt_mind_bot" target="_blank"
                     style="color: #3390ec; text-decoration: none; font-weight: bold;">@tt_mind_bot</a></p>
         </div>
-        <button class="btn" onclick="closeHelp()" style="margin-top: 20px;" data-i18n="btnClose">Закрыть</button>
+        <!-- <button class="btn" onclick="closeHelp()" style="margin-top: 20px;" data-i18n="btnClose">Закрыть</button> -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKT6RPH8MXLepZxM-zMSAjFQ0FSnZjSJmLrvJBS51au-GsPQ/viewform?usp=header"
+            target="_blank" class="btn btn-feedback" data-i18n="btnFeedback">📝 Оставить отзыв</a>
+        <button class="btn" onclick="closeHelp()" style="margin-top: 10px;" data-i18n="btnClose">Закрыть</button>
+    </div>
     </div>
 
     <!-- МОДАЛЬНОЕ ОКНО: ПАУЗА -->
@@ -589,8 +607,13 @@
             <button id="btn-copy-results" class="btn btn-copy" onclick="copyResults()" data-i18n="btnCopy">📋
                 Скопировать результаты</button>
         </div>
-        <button id="btn-return-main" class="btn" onclick="location.reload()" style="margin-top: 20px;"
+        <!-- <button id="btn-return-main" class="btn" onclick="location.reload()" style="margin-top: 20px;"
+            data-i18n="btnReturn">Вернуться на главную</button> -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdKT6RPH8MXLepZxM-zMSAjFQ0FSnZjSJmLrvJBS51au-GsPQ/viewform?usp=header"
+            target="_blank" class="btn btn-feedback" data-i18n="btnFeedback">📝 Оставить отзыв</a>
+        <button id="btn-return-main" class="btn" onclick="location.reload()" style="margin-top: 10px;"
             data-i18n="btnReturn">Вернуться на главную</button>
+    </div>
     </div>
 
     <script>
@@ -618,7 +641,8 @@
                 jsT2Res: "Результат", jsT2Mem: "Запомнено", jsT2Correct: "Ваши правильные слова", jsT2None: "Нет совпадений",
                 jsSumTrainDone: "Тренировка завершена!", jsSumTestDone: "Тесты завершены!", jsSumDate: "Дата", jsSumName: "Имя", jsSumMod: "Модуль", jsSumScore: "Оценка",
                 jsT1Name: "Тест 1 (Счет)", jsT2Name: "Тест 2 (Слова)", jsT3Name: "Тест 3 (Струп)",
-                jsViralLink: "\n🧠 Тренируй мозг тут: @tt_mind_bot"
+                jsViralLink: "\n🧠 Тренируй мозг тут: @tt_mind_bot",
+                btnFeedback: "📝 Оставить отзыв"
             },
             en: {
                 appDesc: "Train and Tests Mind", nameLabel: "Name:", namePlaceholder: "Enter your name", inputLabel: "Enter number (1-5 training, 6 test):",
@@ -640,7 +664,8 @@
                 jsT2Res: "Result", jsT2Mem: "Memorized", jsT2Correct: "Your correct words", jsT2None: "No matches",
                 jsSumTrainDone: "Training Completed!", jsSumTestDone: "Tests Completed!", jsSumDate: "Date", jsSumName: "Name", jsSumMod: "Module", jsSumScore: "Score",
                 jsT1Name: "Test 1 (Count)", jsT2Name: "Test 2 (Words)", jsT3Name: "Test 3 (Stroop)",
-                jsViralLink: "\n🧠 Train your brain here: @tt_mind_bot"
+                jsViralLink: "\n🧠 Train your brain here: @tt_mind_bot",
+                btnFeedback: "📝 Leave Feedback"
             }
         };
 
