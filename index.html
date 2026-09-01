@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Train and Tests Mind (TTM)</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <!-- async 01-09-26 -->
+    <script src="https://telegram.org/js/telegram-web-app.js" async></script>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function (m, e, t, r, i, k, a) {
@@ -576,17 +577,52 @@
             <p><b>Our Telegram bot:</b> <a href="https://t.me/tt_mind_bot" target="_blank"
                     style="color: #3390ec; text-decoration: none; font-weight: bold;">@tt_mind_bot</a></p>
         </div>
-        <button class="btn btn-feedback" onclick="openFeedback()" data-i18n="btnFeedback">📝 Оставить отзыв</button>
-        <button class="btn" onclick="closeHelp()" style="margin-top: 10px;" data-i18n="btnClose">Закрыть</button>
+        <!-- button class="btn btn-feedback" onclick="openFeedback()" data-i18n="btnFeedback">📝 Оставить отзыв</button> -->
+
+        <!-- НОВАЯ ФОРМА ОТЗЫВА -->
+        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ccc;">
+        <h3 data-i18n="feedbackTitle" style="color: #3390ec; margin-top: 0; margin-bottom: 10px; font-size: 16px;">
+            Напишите нам:</h3>
+
+        <div id="feedback-form-container">
+            <textarea id="feedback-text" rows="3" data-i18n-ph="feedbackPh"
+                placeholder="Ваш отзыв, идея или сообщение об ошибке..."
+                style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box; resize: vertical; margin-bottom: 10px; font-family: inherit;"></textarea>
+            <button id="btn-send-feedback" class="btn btn-next" onclick="sendFeedback()"
+                style="font-size: 16px; padding: 10px; margin-top: 0;" data-i18n="btnSend">Отправить</button>
+        </div>
+
+        <div id="feedback-success"
+            style="display: none; color: #34c759; font-weight: bold; text-align: center; margin-top: 10px; padding: 10px; background: #e8f5e9; border-radius: 8px;"
+            data-i18n="feedbackOk">
+            Отзыв успешно отправлен! Спасибо.
+        </div>
+        <!-- КОНЕЦ ФОРМЫ ОТЗЫВА -->
+
+        <button class="btn" onclick="closeHelp()" style="margin-top: 15px;" data-i18n="btnClose">Закрыть</button>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО: ОТЗЫВ (НОВОЕ) -->
+
+    <!--button class="btn" onclick="closeHelp()" style="margin-top: 10px;" data-i18n="btnClose">Закрыть</button -->
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: ОТЗЫВ (НОВОЕ)
     <div id="feedback-modal" class="modal">
         <div style="height: 100%; display: flex; flex-direction: column;">
             <iframe
                 src="https://docs.google.com/forms/d/e/1FAIpQLSdKT6RPH8MXLepZxM-zMSAjFQ0FSnZjSJmLrvJBS51au-GsPQ/viewform?embedded=true"
                 width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0"
                 style="flex-grow: 1; border-radius: 10px; background: #f5f5f5;">Загрузка…</iframe>
+            <button class="btn" onclick="closeFeedback()" style="margin-top: 15px;"
+                data-i18n="btnReturnApp">Вернуться</button>
+        </div>
+    </div>   -->
+
+    <!-- МОДАЛЬНОЕ ОКНО: ОТЗЫВ (НОВОЕ) 01-09-26 -->
+    <div id="feedback-modal" class="modal">
+        <div style="height: 100%; display: flex; flex-direction: column;">
+            <iframe id="feedback-frame" src="" width="100%" height="100%" frameborder="0" marginheight="0"
+                marginwidth="0" style="flex-grow: 1; border-radius: 10px; background: #f5f5f5;">Загрузка…</iframe>
             <button class="btn" onclick="closeFeedback()" style="margin-top: 15px;"
                 data-i18n="btnReturnApp">Вернуться</button>
         </div>
@@ -647,8 +683,12 @@
                 jsSumTrainDone: "Тренировка завершена!", jsSumTestDone: "Тесты завершены!", jsSumDate: "Дата", jsSumName: "Имя", jsSumMod: "Модуль", jsSumScore: "Оценка",
                 jsT1Name: "Тест 1 (Счет)", jsT2Name: "Тест 2 (Слова)", jsT3Name: "Тест 3 (Струп)",
                 jsViralLink: "\n🧠 Тренируй мозг тут: @tt_mind_bot",
-                btnFeedback: "📝 Оставить отзыв",
-                btnReturnApp: "Вернуться"
+                // btnFeedback: "📝 Оставить отзыв",
+                btnReturnApp: "Вернуться",
+                feedbackTitle: "Напишите нам:",
+                feedbackPh: "Ваш отзыв, идея или сообщение об ошибке...",
+                btnSend: "Отправить",
+                feedbackOk: "Отзыв успешно отправлен! Спасибо."
             },
             en: {
                 appDesc: "Train and Tests Mind", nameLabel: "Name:", namePlaceholder: "Enter your name", inputLabel: "Enter number (1-5 training, 6 test):",
@@ -672,7 +712,11 @@
                 jsT1Name: "Test 1 (Count)", jsT2Name: "Test 2 (Words)", jsT3Name: "Test 3 (Stroop)",
                 jsViralLink: "\n🧠 Train your brain here: @tt_mind_bot",
                 btnFeedback: "📝 Leave Feedback",
-                btnReturnApp: "Return"
+                btnReturnApp: "Return",
+                feedbackTitle: "Contact us:",
+                feedbackPh: "Your feedback, idea, or bug report...",
+                btnSend: "Send",
+                feedbackOk: "Feedback sent successfully! Thank you."
             }
         };
 
@@ -783,7 +827,17 @@
         function closeHelp() { document.getElementById('help-modal').classList.remove('active'); }
 
         // Открытие и закрытие формы отзыва
-        function openFeedback() { document.getElementById('feedback-modal').classList.add('active'); }
+        // 01-09-2026 function openFeedback() { document.getElementById('feedback-modal').classList.add('active'); }
+        // Открытие и закрытие формы отзыва
+        function openFeedback() {
+            document.getElementById('feedback-modal').classList.add('active');
+            // Подгружаем форму только при клике
+            const frame = document.getElementById('feedback-frame');
+            if (!frame.src) {
+                frame.src = "https://docs.google.com/forms/d/e/1FAIpQLSdKT6RPH8MXLepZxM-zMSAjFQ0FSnZjSJmLrvJBS51au-GsPQ/viewform?embedded=true";
+            }
+        }
+        function closeFeedback() { document.getElementById('feedback-modal').classList.remove('active'); }
         function closeFeedback() { document.getElementById('feedback-modal').classList.remove('active'); }
 
         // ================== ТЕСТ 1 ==================
@@ -1079,6 +1133,47 @@
                 if (e.shiftKey && document.activeElement === inputY) { e.preventDefault(); inputX.focus(); }
             }
         });
+
+        // ================== ОТПРАВКА ОТЗЫВА НА ПОЧТУ ==================
+        function sendFeedback() {
+            const text = document.getElementById('feedback-text').value.trim();
+            if (!text) return;
+
+            const btn = document.getElementById('btn-send-feedback');
+            btn.innerText = currentLang === 'ru' ? "Отправка..." : "Sending...";
+            btn.disabled = true;
+
+            // Формируем данные для отправки
+            const formData = {
+                access_key: "4557b765-6de3-4c32-8c20-ef36f0dcd823", // Вставь сюда ключ из письма!
+                subject: "Новый отзыв из приложения TTM",
+                from_name: userData.first_name || "Пользователь TTM",
+                message: `ID: ${userData.id}\nИмя: ${userData.first_name}\n\nОтзыв:\n${text}`
+            };
+
+            // Отправляем фоновый запрос (без перезагрузки)
+            fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                body: JSON.stringify(formData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('feedback-form-container').style.display = 'none';
+                        document.getElementById('feedback-success').style.display = 'block';
+                    } else {
+                        alert(currentLang === 'ru' ? "Ошибка отправки." : "Send error.");
+                        btn.innerText = currentLang === 'ru' ? "Отправить" : "Send";
+                        btn.disabled = false;
+                    }
+                })
+                .catch(error => {
+                    alert(currentLang === 'ru' ? "Ошибка сети." : "Network error.");
+                    btn.innerText = currentLang === 'ru' ? "Отправить" : "Send";
+                    btn.disabled = false;
+                });
+        }
     </script>
 </body>
 
